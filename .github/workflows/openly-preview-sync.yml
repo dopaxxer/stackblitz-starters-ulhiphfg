@@ -1,10 +1,8 @@
 name: Openly UI preview sync
 
 on:
-  push:
-    branches: [openly-ui-preview]
-    paths:
-      - '.github/workflows/openly-preview-sync.yml'
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
@@ -15,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: openly-ui-preview
           fetch-depth: 0
 
       - name: Fetch redesigned Openly source
